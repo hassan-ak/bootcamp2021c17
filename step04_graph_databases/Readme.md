@@ -100,6 +100,50 @@
     RETURN prod
     ```
 
+  - We can apply filtering
+
+    ```
+    WHERE a <> b AND b.age > 20
+    ```
+
+    ```
+    WHERE a <> b AND EXISTS ( (b)-[:MARRIED_TO]-(:Person) )
+    ```
+
+    ```
+    WHERE a <> b AND NOT ( (b)-[:MARRIED_TO]-(:Person) )
+    ```
+
+    ```
+    WHERE a <> b AND NONE (x IN nodes(b) WHERE x.age < 21)
+    ```
+
+  - We can Aggregate Data too
+
+    ```
+    MATCH (a:Person {name:'Alice'})-[:FRIEND_OF _OF*1..2]->(p:Person)
+    WHERE a <> p
+    RETURN count(p)
+    ```
+
+    ```
+    MATCH (a:Person {name:'Alice'})-[:FRIEND_OF _OF*1..2]->(p:Person)
+    WHERE a <> p
+    RETURN avg(p.age)
+    ```
+
+    ```
+    RETURN reduce(totalAge = 0,n IN nodes(p)|totalAge + n.age)AS totalAges
+    ```
+
+  - Returning Insight
+
+    ```
+    RETURN p
+    ORDER BY p.age ASC
+    LIMIT 10
+    ```
+
 - [Cyper Updates](https://neo4j.com/developer/cypher/updating/)
 
   - SET: Allows you to change or add a property.

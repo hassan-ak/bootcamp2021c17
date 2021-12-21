@@ -146,6 +146,20 @@
 
 - [Cyper Updates](https://neo4j.com/developer/cypher/updating/)
 
+  - Create New Node
+
+    ```
+    CREATE (friend:Person {name: 'Mark'})
+    RETURN friend
+    ```
+
+  - Create New Relation
+
+    ```
+    CREATE (friend:Person {name: 'Mark'})
+    RETURN friend
+    ```
+
   - SET: Allows you to change or add a property.
     ```
     MATCH (p:Person {name:'Rosa'})
@@ -168,3 +182,5 @@
     ```
 
 - [Sandbox to do practice on Movie Database](https://neo4j.com/sandbox/)
+
+- [Arrows.app to draw pictures of graphs](https://arrows.app/#/local/id=OifJSTY6UryY0jaLYZhd)

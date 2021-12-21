@@ -4,6 +4,8 @@
 
 ### Class Notes
 
+Relational databases were used for a long time and then noSQL databases got the popularilty but know Graph Databases is the new sherif in town. Cypher is query language for new4j and know Cypher9 is becomming the standard and lot of comapnies are following it.
+
 ### Sections
 
 - [Graph Database](./step04_graph_databases)

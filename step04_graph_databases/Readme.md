@@ -102,4 +102,25 @@
 
 - [Cyper Updates](https://neo4j.com/developer/cypher/updating/)
 
+  - SET: Allows you to change or add a property.
+    ```
+    MATCH (p:Person {name:'Rosa'})
+    SET p.surname='Luxemburg'
+    ```
+  - REMOVE: Does the opposite of SET.
+    ```
+    MATCH (p:Person {name:'Rosa'})
+    REMOVE p.surname
+    ```
+  - DELETE: Removes detached nodes and relationships along with their properties
+    ```
+    MATCH (:Person {name:'Rosa'})-[f:FRIEND_OF]->(:Person {name:'Karl'})
+    DELETE f
+    ```
+  - DETACH DELETE, which removes the entire matched pattern and any dangling relationships
+    ```
+    MATCH (k:Person {name:'Karl'})
+    DETACH DELETE k
+    ```
+
 - [Sandbox to do practice on Movie Database](https://neo4j.com/sandbox/)

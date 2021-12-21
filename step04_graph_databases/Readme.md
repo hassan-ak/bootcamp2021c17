@@ -26,9 +26,6 @@
   - For storing data `CREATE (p:Person)-[:LIKES]->(t:Technology)`
   - For quering data `MATCH (p:Person)-[:LIKES]->(t:Technology)` if direction unknown dont add -> just simple -
   - When Nodes and relations has labels `(p:Person {name: "Jennifer"})-[rel:LIKES]->(g:Technology {type: "Graphs"})`
-
-- [Sandbox to do practice on Movie Database](https://neo4j.com/sandbox/)
-
   - To query data with out speciying node properties and limits
 
     ```
@@ -78,3 +75,31 @@
     MATCH (p:Person {name: "Tom Hanks"})-[:DIRECTED]->(m:Movie)
     RETURN m.title, m.released
     ```
+
+  - Working with queries we can exclude few results and also increase the loop for search
+
+    ```
+    MATCH (a:Person {name:'Alice'})-[:FRIEND_OF*1..2]->(p:Person)
+    WHERE a <> p
+    RETURN p
+    ```
+
+  - Working with queries we can exclude the loop for search
+
+    ```
+    MATCH (a:Person {name:'Alice'})-[:FRIEND_OF*2]->(p:Person)
+    WHERE a <> p
+    RETURN p
+    ```
+
+  - Working with queries we can build bigger patterns
+
+    ```
+    MATCH (a:Person {name:'Alice'})-[:FRIEND_OF*1..2]->(p:Person)-[:BOUGHT]->(prod:Product)
+    WHERE a <> p
+    RETURN prod
+    ```
+
+- [Cyper Updates](https://neo4j.com/developer/cypher/updating/)
+
+- [Sandbox to do practice on Movie Database](https://neo4j.com/sandbox/)
